@@ -1,3 +1,4 @@
+
 name: Deploy Masud Labs to GitHub Pages
 
 on:
@@ -26,17 +27,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Build production bundle
         env:
-          # For GitHub Pages project repo (username.github.io/masudlabs/), use /masudlabs/.
-          # When switching to a custom domain, change VITE_BASE_PATH to "/".
-          VITE_BASE_PATH: /masudlabs/
-          # Optional: Set VITE_SITE_URL in Repository Variables (vars.VITE_SITE_URL)
+          VITE_BASE_PATH: /masud-labs/
           VITE_SITE_URL: ${{ vars.VITE_SITE_URL }}
         run: npm run build
 
